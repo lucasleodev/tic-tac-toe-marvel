@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Md5 } from 'ts-md5/dist/md5';
@@ -22,10 +23,9 @@ export class MarvelDatabaseService {
     params = hero
       ? Object.assign({}, params, { name: hero })
       : Object.assign({}, params);
-    this.http
-      .get(`${environment.API_MARVEL}/v1/public/characters`, { params })
-      .subscribe((res) => {
-        console.log(res);
-      });
+
+    return this.http.get(`${environment.API_MARVEL}/v1/public/characters`, {
+      params,
+    });
   }
 }
