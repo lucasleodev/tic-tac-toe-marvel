@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameComponent } from './pages/game/game.component';
 
+import { MarvelDatabaseService } from './services/marvel-database.service';
+
 @NgModule({
   declarations: [AppComponent, GameComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [MarvelDatabaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
