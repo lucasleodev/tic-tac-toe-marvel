@@ -2,7 +2,9 @@
   <input
     type="text"
     placeholder="Coloque o nome completo do personagem (Jogador #01"
-    [(ngModel)]="player.name"
+    [(ngModel)]="nameHero"
   />
   <button (click)="searchHero()">Procurar</button>
+  <h1>{{ player.name }}</h1>
+  <img [src]="player.thumbnail" />
 </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Md5 } from 'ts-md5/dist/md5';
+import { HeroData } from '../models/hero-data.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class MarvelDatabaseService {
   constructor(private http: HttpClient) {}
 
-  searchMarvelCharacter(hero?: string) {
+  searchMarvelCharacter(hero?: string): Observable<HeroData> {
     let ts = new Date().getTime();
     let tempHash = ts + environment.PRIVATE_KEY + environment.PUBLIC_KEY;
     let hash = Md5.hashStr(tempHash);
