@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Hero } from 'src/app/models/hero.model';
 import { MarvelDatabaseService } from 'src/app/services/marvel-database.service';
 
 @Component({
@@ -9,9 +10,19 @@ import { MarvelDatabaseService } from 'src/app/services/marvel-database.service'
 export class GameComponent implements OnInit {
   constructor(private marvelDB: MarvelDatabaseService) {}
 
-  ngOnInit(): void {
-    this.marvelDB.searchMarvelCharacter();
+  player01: Hero = {};
+  player02: Hero = {};
+  gameStatus: boolean = false;
+
+  ngOnInit(): void {}
+
+  searchHero() {
+    this.marvelDB
+      .searchMarvelCharacter(this.player01.name)
+      .subscribe((res) => console.log(res));
   }
 
-  searchHero() {}
+  startGame(event: any) {
+    this.gameStatus = event;
+  }
 }

@@ -1,0 +1,13 @@
+.hero-field {
+  display: flex;
+  flex-direction: column;
+
+  > h1 {
+    text-overflow: clip;
+  }
+
+  > img {
+    max-width: 140px;
+    max-height: 140px;
+  }
+}

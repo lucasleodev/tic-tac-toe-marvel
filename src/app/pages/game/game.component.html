@@ -1,1 +1,7 @@
-<p>game works!</p>
+<app-select-heroes
+  (canStartGame)="startGame($event)"
+  *ngIf="!gameStatus; else gameBoard"
+></app-select-heroes>
+<ng-template #gameBoard>
+  <h1>Jogo Começou</h1>
+</ng-template>

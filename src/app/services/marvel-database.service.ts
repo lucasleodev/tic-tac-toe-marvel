@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Md5 } from 'ts-md5/dist/md5';
+import { HeroData } from '../models/hero-data.model';
+import { Hero } from '../models/hero.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +13,9 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class MarvelDatabaseService {
   constructor(private http: HttpClient) {}
 
-  searchMarvelCharacter(hero?: string) {
+  heroes: Hero[] = [];
+
+  searchMarvelCharacter(hero?: string): Observable<HeroData> {
     let ts = new Date().getTime();
     let tempHash = ts + environment.PRIVATE_KEY + environment.PUBLIC_KEY;
     let hash = Md5.hashStr(tempHash);
@@ -22,10 +27,14 @@ export class MarvelDatabaseService {
     params = hero
       ? Object.assign({}, params, { name: hero })
       : Object.assign({}, params);
-    this.http
-      .get(`${environment.API_MARVEL}/v1/public/characters`, { params })
-      .subscribe((res) => {
-        console.log(res);
-      });
+
+    return this.http.get(`${environment.API_MARVEL}/v1/public/characters`, {
+      params,
+    });
+  }
+
+  saveHero(heroes: Hero[]) {
+    this.heroes = heroes;
+    console.log(this.heroes);
   }
 }
