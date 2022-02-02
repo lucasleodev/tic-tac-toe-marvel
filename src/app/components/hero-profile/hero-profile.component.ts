@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Hero } from 'src/app/models/hero.model';
 import { MarvelDatabaseService } from 'src/app/services/marvel-database.service';
 
@@ -11,6 +11,7 @@ export class HeroProfileComponent implements OnInit {
   constructor(private marvelDB: MarvelDatabaseService) {}
   nameHero: string = '';
   player: Hero = {};
+  @Output() sendHero: EventEmitter<Hero> = new EventEmitter();
 
   ngOnInit(): void {}
 
@@ -19,10 +20,14 @@ export class HeroProfileComponent implements OnInit {
       console.log(res);
       if (res.data?.results?.length == 1) {
         this.player.name = res.data.results[0].name;
-
-        let imageURL = `${res.data.results[0].thumbnail?.path}/detail.${res.data.results[0].thumbnail?.extension}`;
+        let imageURL = `${res.data.results[0].thumbnail?.path}/standard_large.${res.data.results[0].thumbnail?.extension}`;
         this.player.thumbnail = imageURL;
-        console.error('SEU PAI TENTOU ME MAMAR, ELE SE MAMOU');
+        this.player.score = 0;
+        this.sendHero.emit(this.player);
+      } else {
+        this.player.name = 'Pesquise de novo';
+        let imageURL = `assets/notFound.png`;
+        this.player.thumbnail = imageURL;
       }
     });
   }

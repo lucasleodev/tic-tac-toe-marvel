@@ -5,12 +5,15 @@ import { environment } from 'src/environments/environment';
 
 import { Md5 } from 'ts-md5/dist/md5';
 import { HeroData } from '../models/hero-data.model';
+import { Hero } from '../models/hero.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MarvelDatabaseService {
   constructor(private http: HttpClient) {}
+
+  heroes: Hero[] = [];
 
   searchMarvelCharacter(hero?: string): Observable<HeroData> {
     let ts = new Date().getTime();
@@ -28,5 +31,10 @@ export class MarvelDatabaseService {
     return this.http.get(`${environment.API_MARVEL}/v1/public/characters`, {
       params,
     });
+  }
+
+  saveHero(heroes: Hero[]) {
+    this.heroes = heroes;
+    console.log(this.heroes);
   }
 }

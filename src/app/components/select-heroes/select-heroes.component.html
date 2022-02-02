@@ -1,4 +1,5 @@
 <div class="select-heroes">
-  <app-hero-profile></app-hero-profile>
-  <app-hero-profile></app-hero-profile>
+  <app-hero-profile (sendHero)="confirmSelect($event, 0)"></app-hero-profile>
+  <app-hero-profile (sendHero)="confirmSelect($event, 1)"></app-hero-profile>
 </div>
+<button (click)="startTicTacToe()" [disabled]="!startGame">Iniciar Jogo</button>

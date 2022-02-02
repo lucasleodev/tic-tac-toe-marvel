@@ -10,6 +10,7 @@ import { HeroProfileComponent } from './components/hero-profile/hero-profile.com
 import { SelectHeroesComponent } from './components/select-heroes/select-heroes.component';
 
 import { MarvelDatabaseService } from './services/marvel-database.service';
+import { CheckboardComponent } from './components/checkboard/checkboard.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MarvelDatabaseService } from './services/marvel-database.service';
     GameComponent,
     HeroProfileComponent,
     SelectHeroesComponent,
+    CheckboardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [MarvelDatabaseService],
