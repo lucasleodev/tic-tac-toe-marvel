@@ -1,1 +1,7 @@
-<p>checkboard works!</p>
+<div class="gameField">
+  <div class="rows" *ngFor="let row of gameBoard">
+    <div class="cols" *ngFor="let col of row.field; let i = index">
+      <div>{{ col.idHero }}</div>
+    </div>
+  </div>
+</div>

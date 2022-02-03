@@ -3,5 +3,5 @@
   *ngIf="!gameStatus; else gameBoard"
 ></app-select-heroes>
 <ng-template #gameBoard>
-  <h1>Jogo Começou</h1>
+  <app-checkboard></app-checkboard>
 </ng-template>
