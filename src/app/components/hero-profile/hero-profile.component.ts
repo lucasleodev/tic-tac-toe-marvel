@@ -17,12 +17,13 @@ export class HeroProfileComponent implements OnInit {
 
   searchHero() {
     this.marvelDB.searchMarvelCharacter(this.nameHero).subscribe((res) => {
-      console.log(res);
       if (res.data?.results?.length == 1) {
         this.player.name = res.data.results[0].name;
         let imageURL = `${res.data.results[0].thumbnail?.path}/standard_large.${res.data.results[0].thumbnail?.extension}`;
         this.player.thumbnail = imageURL;
         this.player.score = 0;
+        this.player.firstPlayer = false;
+        this.player.id = res.data.results[0].id;
         this.sendHero.emit(this.player);
       } else {
         this.player.name = 'Pesquise de novo';

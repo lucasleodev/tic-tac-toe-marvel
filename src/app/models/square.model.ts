@@ -3,6 +3,8 @@ export class Square {
 }
 
 export class Field {
+  idSquare?: number;
   idHero?: number;
   selected?: boolean;
+  chartSelection?: string;
 }

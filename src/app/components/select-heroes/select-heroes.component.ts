@@ -25,7 +25,6 @@ export class SelectHeroesComponent implements OnInit {
   }
 
   startTicTacToe() {
-    console.log('Jogo iniciado');
     this.marvelDB.saveHero(this.heroes);
     this.canStartGame.emit(this.startGame);
   }

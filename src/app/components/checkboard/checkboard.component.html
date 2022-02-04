@@ -1,7 +1,10 @@
 <div class="gameField">
+  <div *ngIf="gameOver">{{ player?.name }} é o vencedor!</div>
   <div class="rows" *ngFor="let row of gameBoard">
     <div class="cols" *ngFor="let col of row.field; let i = index">
-      <div>{{ col.idHero }}</div>
+      <button (click)="selectSquare(col)" class="square">
+        {{ col.chartSelection }}
+      </button>
     </div>
   </div>
 </div>
