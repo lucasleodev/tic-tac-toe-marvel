@@ -8,9 +8,9 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './pages/game/game.component';
 import { HeroProfileComponent } from './components/hero-profile/hero-profile.component';
 import { SelectHeroesComponent } from './components/select-heroes/select-heroes.component';
+import { CheckboardComponent } from './components/checkboard/checkboard.component';
 
 import { MarvelDatabaseService } from './services/marvel-database.service';
-import { CheckboardComponent } from './components/checkboard/checkboard.component';
 
 @NgModule({
   declarations: [

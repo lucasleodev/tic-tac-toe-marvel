@@ -1,0 +1,22 @@
+.gameField {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 20px);
+}
+
+.rows {
+  display: inline-flex;
+  max-width: 10rem;
+  max-height: 10rem;
+}
+.cols {
+  width: 3rem;
+  height: 3rem;
+}
+
+.square {
+  width: 3rem;
+  height: 3rem;
+}

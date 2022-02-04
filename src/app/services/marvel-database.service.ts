@@ -35,6 +35,9 @@ export class MarvelDatabaseService {
 
   saveHero(heroes: Hero[]) {
     this.heroes = heroes;
-    console.log(this.heroes);
+  }
+
+  returnHeroes() {
+    return this.heroes;
   }
 }
