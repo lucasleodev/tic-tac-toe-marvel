@@ -1,10 +1,11 @@
 <div class="hero-field">
   <input
+    class="input-hero"
     type="text"
-    placeholder="Coloque o nome completo do personagem (Jogador #01"
+    placeholder="Nome do personagem"
     [(ngModel)]="nameHero"
   />
-  <button (click)="searchHero()">Procurar</button>
+  <button (click)="searchHero()" class="btn-hero">Procurar</button>
   <h1>{{ player.name }}</h1>
   <img [src]="player.thumbnail" />
 </div>
