@@ -11,6 +11,7 @@ import { SelectHeroesComponent } from './components/select-heroes/select-heroes.
 import { CheckboardComponent } from './components/checkboard/checkboard.component';
 
 import { MarvelDatabaseService } from './services/marvel-database.service';
+import { CheckboardHeroComponent } from './components/checkboard-hero/checkboard-hero.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MarvelDatabaseService } from './services/marvel-database.service';
     HeroProfileComponent,
     SelectHeroesComponent,
     CheckboardComponent,
+    CheckboardHeroComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [MarvelDatabaseService],

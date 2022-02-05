@@ -1,9 +1,16 @@
 .gameField {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: calc(100vh - 20px);
+}
+
+.checkboard {
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: calc(100vh - 20px);
 }
 
 .rows {

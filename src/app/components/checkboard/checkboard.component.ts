@@ -13,19 +13,17 @@ export class CheckboardComponent implements OnInit {
 
   heroes: Hero[] = [{}, {}];
   gameOver: boolean = false;
-  firstPlayerMove: boolean = true;
   player: Hero | undefined = {};
 
   constructor(private marvelDB: MarvelDatabaseService) {}
 
   ngOnInit(): void {
-    this.resetBoard();
     this.heroes = this.marvelDB.returnHeroes();
-    this.headOrTails();
+    this.resetBoard();
   }
 
   selectSquare(square: Field) {
-    if (square.selected) {
+    if (square.selected || this.gameOver) {
       return;
     }
     console.log(this.player);
@@ -33,10 +31,13 @@ export class CheckboardComponent implements OnInit {
     square.idHero = this.player?.id;
     square.chartSelection = this.player?.chartSelection;
     this.verifyTicTacToe();
-    this.changePlayer();
+    if (!this.gameOver) this.changePlayer();
   }
 
   headOrTails() {
+    this.heroes.forEach((hero) => {
+      hero.firstPlayer = false;
+    });
     let decision = Math.floor(Math.random() * 10);
     decision >= 4
       ? (this.heroes[0].firstPlayer = true)
@@ -46,15 +47,14 @@ export class CheckboardComponent implements OnInit {
     );
     this.player = Object.assign(
       {},
-      this.heroes.find((hero) => hero.firstPlayer == this.firstPlayerMove)
+      this.heroes.find((hero) => hero.firstPlayer == true)
     );
   }
 
   changePlayer() {
-    this.firstPlayerMove = !this.firstPlayerMove;
     this.player = Object.assign(
       {},
-      this.heroes.find((hero) => hero.firstPlayer == this.firstPlayerMove)
+      this.heroes.find((hero) => hero.firstPlayer == !this.player?.firstPlayer)
     );
   }
 
@@ -83,6 +83,7 @@ export class CheckboardComponent implements OnInit {
         ],
       },
     ];
+    this.headOrTails();
   }
 
   verifyTicTacToe() {
@@ -123,6 +124,9 @@ export class CheckboardComponent implements OnInit {
       let itsMatch = rowToTest.every((val) => val == this.player?.id);
       if (itsMatch) {
         this.gameOver = !this.gameOver;
+        this.heroes.forEach((hero) => {
+          hero.id == this.player?.id ? hero.score!++ : undefined;
+        });
         return;
       } else {
         console.log('Ainda tá rolando');
