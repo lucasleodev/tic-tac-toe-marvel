@@ -2,10 +2,20 @@
   <app-checkboard-hero [hero]="heroes[0]"></app-checkboard-hero>
   <div class="checkboard">
     <div *ngIf="gameOver">{{ winnerName }}</div>
+    <div *ngIf="!gameOver">
+      Vez do jogador <strong>{{ player!.chartSelection }}</strong>
+    </div>
 
     <div class="rows" *ngFor="let row of gameBoard">
       <div class="cols" *ngFor="let col of row.field; let i = index">
-        <button (click)="selectSquare(col)" class="square">
+        <button
+          (click)="selectSquare(col)"
+          class="square"
+          [ngClass]="{
+            'square-x': col.chartSelection == 'X',
+            'square-o': col.chartSelection == 'O'
+          }"
+        >
           {{ col.chartSelection }}
         </button>
       </div>

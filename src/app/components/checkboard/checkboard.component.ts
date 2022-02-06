@@ -125,7 +125,8 @@ export class CheckboardComponent implements OnInit {
       let itsMatch = rowToTest.every((val) => val == this.player?.id);
       if (itsMatch) {
         this.gameOver = !this.gameOver;
-        this.winnerName = `${this.player!.name!} venceu!`;
+        this.winnerName = `${this.player!.name!} (${this.player!
+          .chartSelection!}) venceu!`;
         this.heroes.forEach((hero) => {
           hero.id == this.player?.id ? hero.score!++ : undefined;
         });
