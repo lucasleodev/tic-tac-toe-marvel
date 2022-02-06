@@ -1,27 +1,22 @@
-# TicTacToeMarvel
+# Marvel Tic-Tac-Toe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+Este documento explica como fazer uma cópia do projeto e executar em seu ambiente.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- NodeJS
+- Angular CLI
+- npm
+- (opcional) se estiver usando Windows, sugiro o `cmder` como terminal
 
-## Code scaffolding
+### Copiando o Projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clique no botão `Code` do repositório e clone o projeto ou baixe o .zip dele e o extraia na pasta de sua preferência.
 
-## Build
+### Iniciando o Projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Após ter o projeto em sua máquina, rode o comando `npm install` na raiz para instalar as dependências. Após isso, basta executar `ng serve` ou `npm start` e o projeto será carregado na url `localhost:4200`
 
-## Running unit tests
+## Jogando
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Na tela inicial, pesquise pelos personagens da Marvel que você deseja usar como avatar. Os 2 jogadores podem usar um mesmo personagem, se quiserem. Após a seleção, o botão de `Iniciar Jogo` será habilitado, e ele levará para a tela de jogo. No centro da tela fica o tabuleiro, e nas laterais os avatares do jogadores, com seus nomes, símbolos no jogo e placares. O `X` sempre começa. Quando um jogador pontuar ou der empate, o botão de nova partida fica habilitado.
