@@ -1,5 +1,11 @@
 <div class="hero-panel">
   <img [src]="hero.thumbnailGame" />
-  <p>Símbolo do jogador: {{ hero.chartSelection }}</p>
-  <p>Pontuação: {{ hero.score }}</p>
+  <div class="info-hero">
+    <p>
+      Jogador <strong>{{ hero.chartSelection }}</strong>
+    </p>
+    <p>
+      Pontuação: <strong>{{ hero.score }}</strong>
+    </p>
+  </div>
 </div>
