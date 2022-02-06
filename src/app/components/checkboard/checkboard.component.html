@@ -1,8 +1,8 @@
-<div *ngIf="gameOver">{{ player?.name }} é o vencedor!</div>
-
 <div class="gameField">
   <app-checkboard-hero [hero]="heroes[0]"></app-checkboard-hero>
   <div class="checkboard">
+    <div *ngIf="gameOver">{{ winnerName }}</div>
+
     <div class="rows" *ngFor="let row of gameBoard">
       <div class="cols" *ngFor="let col of row.field; let i = index">
         <button (click)="selectSquare(col)" class="square">
@@ -10,8 +10,8 @@
         </button>
       </div>
     </div>
+
+    <button (click)="resetBoard()" *ngIf="gameOver">Jogar Novamente</button>
   </div>
   <app-checkboard-hero [hero]="heroes[1]"></app-checkboard-hero>
 </div>
-
-<button (click)="resetBoard()" *ngIf="gameOver">Jogar Novamente</button>

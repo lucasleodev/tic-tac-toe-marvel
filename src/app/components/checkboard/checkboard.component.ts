@@ -14,7 +14,7 @@ export class CheckboardComponent implements OnInit {
   heroes: Hero[] = [{}, {}];
   gameOver: boolean = false;
   player: Hero | undefined = {};
-
+  winnerName: string = '';
   constructor(private marvelDB: MarvelDatabaseService) {}
 
   ngOnInit(): void {
@@ -59,6 +59,7 @@ export class CheckboardComponent implements OnInit {
   }
 
   resetBoard() {
+    this.winnerName = '';
     this.gameOver = false;
     this.gameBoard = [
       {
@@ -124,12 +125,25 @@ export class CheckboardComponent implements OnInit {
       let itsMatch = rowToTest.every((val) => val == this.player?.id);
       if (itsMatch) {
         this.gameOver = !this.gameOver;
+        this.winnerName = `${this.player!.name!} venceu!`;
         this.heroes.forEach((hero) => {
           hero.id == this.player?.id ? hero.score!++ : undefined;
         });
         return;
       } else {
-        console.log('Ainda tá rolando');
+        let row1 = this.gameBoard[0].field!.map((col) => col.selected);
+        let row2 = this.gameBoard[1].field!.map((col) => col.selected);
+        let row3 = this.gameBoard[2].field!.map((col) => col.selected);
+        let checkAll = [...row1, ...row2, ...row3];
+        console.log(checkAll);
+        if (checkAll.every((value) => value == true)) {
+          console.log('tudo selecionado');
+          this.gameOver = !this.gameOver;
+          this.winnerName = 'Empate!';
+          return;
+        } else {
+          console.log('tem chão ainda');
+        }
       }
     }
     console.log('fim do loop');
