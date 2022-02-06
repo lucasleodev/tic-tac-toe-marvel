@@ -107,13 +107,6 @@ export class CheckboardComponent implements OnInit {
       row.field?.map((col) => boardToArray.push(col.idHero!))
     );
 
-    /*winPossibilities.map((possibility) => {
-      let rowToTest = [];
-      for (let count = 0; count < 3; count++) {
-        rowToTest.push(boardToArray[possibility[count] - 1]);
-      }
-      rowToTest.every((val) => val == this.player?.id);
-    });*/
     let itsMatch = false;
 
     for (let i = 0; i < winPossibilities.length; i++) {
