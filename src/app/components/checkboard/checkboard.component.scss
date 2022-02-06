@@ -13,6 +13,28 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  > .msg-header {
+    font-size: 2rem;
+    margin: 0 0 3rem 0;
+  }
+
+  > .btn-restart {
+    margin: 3rem 0 0 0;
+    width: 15rem;
+    font-size: 2rem;
+    border-radius: 5% 0;
+    background-color: #7a0110;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: #aa0110;
+    }
+
+    &:active {
+      background-color: #dd0110;
+    }
+  }
 }
 
 .rows {

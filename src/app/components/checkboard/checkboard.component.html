@@ -1,8 +1,8 @@
 <div class="gameField">
   <app-checkboard-hero [hero]="heroes[0]"></app-checkboard-hero>
   <div class="checkboard">
-    <div *ngIf="gameOver">{{ winnerName }}</div>
-    <div *ngIf="!gameOver">
+    <div *ngIf="gameOver" class="msg-header">{{ winnerName }}</div>
+    <div *ngIf="!gameOver" class="msg-header">
       Vez do jogador <strong>{{ player!.chartSelection }}</strong>
     </div>
 
@@ -21,7 +21,9 @@
       </div>
     </div>
 
-    <button (click)="resetBoard()" *ngIf="gameOver">Jogar Novamente</button>
+    <button (click)="resetBoard()" *ngIf="gameOver" class="btn-restart">
+      Jogar Novamente
+    </button>
   </div>
   <app-checkboard-hero [hero]="heroes[1]"></app-checkboard-hero>
 </div>

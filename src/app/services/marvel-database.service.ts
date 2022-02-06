@@ -40,4 +40,8 @@ export class MarvelDatabaseService {
   returnHeroes() {
     return this.heroes;
   }
+
+  clearHeroes() {
+    this.heroes = [];
+  }
 }

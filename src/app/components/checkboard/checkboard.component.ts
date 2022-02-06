@@ -26,7 +26,6 @@ export class CheckboardComponent implements OnInit {
     if (square.selected || this.gameOver) {
       return;
     }
-    console.log(this.player);
     square.selected = true;
     square.idHero = this.player?.id;
     square.chartSelection = this.player?.chartSelection;
@@ -115,38 +114,35 @@ export class CheckboardComponent implements OnInit {
       }
       rowToTest.every((val) => val == this.player?.id);
     });*/
+    let itsMatch = false;
 
     for (let i = 0; i < winPossibilities.length; i++) {
       let rowToTest = [];
-
       for (let count = 0; count < 3; count++) {
         rowToTest.push(boardToArray[winPossibilities[i][count] - 1]);
       }
-      let itsMatch = rowToTest.every((val) => val == this.player?.id);
-      if (itsMatch) {
+
+      itsMatch = rowToTest.every((val) => val == this.player?.id);
+      if (itsMatch) break;
+    }
+    if (itsMatch) {
+      this.gameOver = !this.gameOver;
+      this.winnerName = `${this.player!.name!} (${this.player!
+        .chartSelection!}) venceu!`;
+      this.heroes.forEach((hero) => {
+        hero.id == this.player?.id ? hero.score!++ : undefined;
+      });
+      return;
+    } else {
+      let row1 = this.gameBoard[0].field!.map((col) => col.selected);
+      let row2 = this.gameBoard[1].field!.map((col) => col.selected);
+      let row3 = this.gameBoard[2].field!.map((col) => col.selected);
+      let checkAll = [...row1, ...row2, ...row3];
+      if (checkAll.every((value) => value == true)) {
         this.gameOver = !this.gameOver;
-        this.winnerName = `${this.player!.name!} (${this.player!
-          .chartSelection!}) venceu!`;
-        this.heroes.forEach((hero) => {
-          hero.id == this.player?.id ? hero.score!++ : undefined;
-        });
+        this.winnerName = 'Empate!';
         return;
-      } else {
-        let row1 = this.gameBoard[0].field!.map((col) => col.selected);
-        let row2 = this.gameBoard[1].field!.map((col) => col.selected);
-        let row3 = this.gameBoard[2].field!.map((col) => col.selected);
-        let checkAll = [...row1, ...row2, ...row3];
-        console.log(checkAll);
-        if (checkAll.every((value) => value == true)) {
-          console.log('tudo selecionado');
-          this.gameOver = !this.gameOver;
-          this.winnerName = 'Empate!';
-          return;
-        } else {
-          console.log('tem chão ainda');
-        }
       }
     }
-    console.log('fim do loop');
   }
 }

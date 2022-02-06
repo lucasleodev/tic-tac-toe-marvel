@@ -23,7 +23,7 @@ export class HeroProfileComponent implements OnInit {
         this.player.thumbnailGame = `${res.data.results[0].thumbnail?.path}/portrait_fantastic.${res.data.results[0].thumbnail?.extension}`;
         this.player.score = 0;
         this.player.firstPlayer = false;
-        this.player.id = res.data.results[0].id;
+        this.player.id = parseInt(`${res.data.results[0].id}${Date.now()}`);
         this.sendHero.emit(this.player);
       } else {
         this.player.name = 'Pesquise de novo';
