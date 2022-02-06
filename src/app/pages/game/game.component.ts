@@ -16,12 +16,6 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  searchHero() {
-    this.marvelDB
-      .searchMarvelCharacter(this.player01.name)
-      .subscribe((res) => console.log(res));
-  }
-
   startGame(event: any) {
     this.gameStatus = event;
   }

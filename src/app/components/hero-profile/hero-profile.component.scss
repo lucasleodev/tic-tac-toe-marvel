@@ -1,13 +1,55 @@
 .hero-field {
   display: flex;
   flex-direction: column;
+  background-color: #bbbbbb;
+  width: 20vw;
+  padding: 2rem;
+  border-radius: 1rem;
+  //height: 20rem;
+
+  > .input-hero {
+    //width: 10rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom: 2px solid black;
+    color: black;
+  }
+
+  > .btn-hero {
+    margin: 1rem 0 0 0;
+    height: 4rem;
+    border-radius: 0.5rem 1rem;
+    background-color: #7a0110;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: #aa0110;
+    }
+
+    &:active {
+      background-color: #dd0110;
+    }
+  }
 
   > h1 {
-    text-overflow: clip;
+    color: black;
+    background-color: transparent;
   }
 
   > img {
     max-width: 140px;
     max-height: 140px;
+    border-radius: 0.5rem;
   }
+
+  > .hero-selected {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
 }

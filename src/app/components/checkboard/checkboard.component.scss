@@ -1,3 +1,5 @@
+/*Paleta Marvel => https://www.color-hex.com/color-palette/6563*/
+
 .gameField {
   display: flex;
   align-items: center;
@@ -11,19 +13,53 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  > .msg-header {
+    font-size: 2rem;
+    margin: 0 0 3rem 0;
+  }
+
+  > .btn-restart {
+    margin: 3rem 0 0 0;
+    width: 15rem;
+    font-size: 2rem;
+    border-radius: 5% 0;
+    background-color: #7a0110;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: #aa0110;
+    }
+
+    &:active {
+      background-color: #dd0110;
+    }
+  }
 }
 
 .rows {
   display: inline-flex;
-  max-width: 10rem;
-  max-height: 10rem;
+  max-width: 30rem;
+  max-height: 30rem;
 }
 .cols {
-  width: 3rem;
-  height: 3rem;
+  width: 9.5rem;
+  height: 9.5rem;
 }
 
 .square {
-  width: 3rem;
-  height: 3rem;
+  width: 9rem;
+  height: 9rem;
+  border: 2px solid transparent;
+  background-color: #504a4a;
+  font-size: 5rem;
+  margin: 1%;
+
+  &.square-x {
+    background-color: #e23636;
+  }
+
+  &.square-o {
+    background-color: #f78f3f;
+  }
 }
